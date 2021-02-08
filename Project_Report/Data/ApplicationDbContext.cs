@@ -25,7 +25,12 @@ namespace Project_Report.Data
                         .WithMany(q => q.Answers)
                         .IsRequired()
                         .HasForeignKey(x => x.QuestionId)
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Answer>()
+                        .HasOne(r => r.Report)
+                        .WithMany(r => r.Answers)
+                        .HasForeignKey(x => x.ReportId)
+                        .OnDelete(DeleteBehavior.NoAction);
                      
 
             base.OnModelCreating(modelBuilder);

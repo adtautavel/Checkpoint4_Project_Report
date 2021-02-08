@@ -385,13 +385,13 @@ namespace Project_Report.Migrations
                     b.HasOne("Project_Report.Models.Question", "Question")
                         .WithMany("Answers")
                         .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.SetNull)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Project_Report.Models.Report", "Report")
                         .WithMany("Answers")
                         .HasForeignKey("ReportId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });
 
